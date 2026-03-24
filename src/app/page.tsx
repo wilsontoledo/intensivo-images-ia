@@ -16,14 +16,13 @@ export default function HomePage() {
         <section className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_320px] lg:items-start">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-sky-300">
-              Base de wiki pronta para Vercel
+              Super Intensivo do uso de IA para criação de imagens e vídeos
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-white md:text-5xl">
               Documentação técnica simples hoje, estruturada para crescer depois.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-              O conteúdo agora vive em arquivos Markdown desacoplados da UI, com rotas dinâmicas,
-              navegação automática e uma base limpa em Next.js, TypeScript, App Router e Tailwind CSS.
+              Intensivo avançado de IA para criação de imagens e vídeos com IA. Após concluírmos todos os módulos teremos a capacidade de criar imagens e vídeos de alta qualidade e com controle total sobre o processo.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">

@@ -9,7 +9,7 @@ export function SiteHeader() {
             Intensivo IA
           </Link>
           <p className="mt-1 text-sm text-slate-400">
-            Wiki técnica em Next.js, pronta para evoluir e publicar na Vercel.
+            Wiki técnica para desenvolvimento de imagens e vídeos com IA
           </p>
         </div>
 
