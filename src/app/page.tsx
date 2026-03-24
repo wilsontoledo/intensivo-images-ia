@@ -20,7 +20,7 @@ export default function HomePage() {
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-white md:text-5xl">
               Documentação técnica simples hoje, estruturada para crescer depois.
-            </h1>
+            </h1> 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
               Intensivo avançado de IA para criação de imagens e vídeos com IA. Após concluírmos todos os módulos teremos a capacidade de criar imagens e vídeos de alta qualidade e com controle total sobre o processo.
             </p>
