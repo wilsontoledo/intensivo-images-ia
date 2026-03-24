@@ -150,4 +150,8 @@ Ao concluir esta página, você deve conseguir explicar com clareza:
 - o que o pipeline faz;
 - o que o operador controla.
 
+## observacoes
+
+Tudo entendido por João Uehara
+
 ---
