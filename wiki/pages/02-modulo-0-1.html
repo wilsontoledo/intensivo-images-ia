@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Módulo 0.1 · Wiki Treinamento IA</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="wiki-body">
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+  <header class="wiki-top">
+    <div class="wiki-top-inner">
+      <a class="btn-back" href="../index.html">← Voltar ao sumário</a>
+      <span class="wiki-top-meta">O que geração com IA realmente é</span>
+    </div>
+  </header>
+  <main id="conteudo" class="wiki-main">
+    <article class="wiki-article">
+      <h1 class="wiki-title">Módulo 0.1</h1>
+      <h2>FASE 0 — Mentalidade, vocabulário e mapa do território</h2>
+      <h2>Módulo 0.1 — O que geração com IA realmente é</h2>
+      <p class="wiki-lead">Este módulo estabelece o modelo mental que sustenta todo o treinamento. O objetivo não é aprender a “pedir imagens” para uma ferramenta, mas entender a geração visual como um sistema probabilístico condicionado, operado por meio de pipeline e governado por variáveis técnicas.</p>
+
+      <div class="wiki-panel">
+        <h3>Ao final deste módulo, você deve ser capaz de explicar</h3>
+        <ul>
+          <li>por que geração de imagem com IA não é desenho automatizado;</li>
+          <li>como um modelo de difusão transforma ruído em imagem de forma iterativa;</li>
+          <li>qual é a diferença entre capacidade do modelo e controle do pipeline;</li>
+          <li>por que seed, sampling e condicionamento são parte do sistema, não detalhes secundários.</li>
+        </ul>
+      </div>
+
+      <h2>1. Introdução — O mito da “IA que desenha”</h2>
+      <p>O atalho mental mais comum e mais enganoso é dizer que a IA “desenha como um humano”. Essa frase parece útil para comunicação rápida, mas é conceitualmente ruim. Ela sugere intenção, compreensão visual e tomada criativa comparáveis às de uma pessoa. Nenhuma dessas premissas descreve corretamente o que ocorre em um modelo generativo.</p>
+      <p>Quando um sistema de geração de imagem produz um resultado visual coerente, ele não está observando o mundo, formando uma intenção estética e depois executando um desenho. Ele está operando sobre representações aprendidas a partir de grandes volumes de dados, ajustando estados internos até convergir para uma distribuição visual compatível com certos condicionamentos.</p>
+      <p>O modelo mental correto é este: geração com IA não é um ato autoral no sentido humano. É um processo de inferência probabilística sobre um espaço de representações visuais, guiado por sinais de entrada e por decisões de pipeline. O operador não “inspira” a máquina. O operador configura um sistema.</p>
+
+      <h2>2. O que é geração de imagem com IA na prática</h2>
+      <p>Na prática, grande parte dos sistemas contemporâneos de alta qualidade para imagem funciona com base em modelos de difusão. Em termos conceituais, o processo pode ser entendido como uma trajetória que parte de um estado ruidoso e caminha, passo a passo, em direção a uma configuração visual estável.</p>
+      <p>O ponto de partida costuma ser ruído. Esse ruído não é um rascunho da imagem; ele é um estado inicial sem estrutura semântica útil para um observador humano. A cada iteração, o modelo estima como esse estado deve ser ajustado para se aproximar de algo que pareça consistente com o que aprendeu durante o treinamento e com o condicionamento fornecido.</p>
+      <p>Esse refinamento é iterativo. Cada passo reduz ambiguidades locais, reorganiza estrutura global e reposiciona detalhes prováveis. Ao final, o processo converge para uma amostra visual plausível dentro das restrições impostas pelo sistema. O texto do prompt não atua como instrução executiva direta. Ele funciona como sinal de condicionamento, influenciando a direção estatística do processo.</p>
+      <p>Por isso, três afirmações são centrais:</p>
+      <ul>
+        <li>não existe intenção interna;</li>
+        <li>não existe entendimento semântico no sentido humano;</li>
+        <li>existe modelagem estatística de correlações entre padrões visuais e sinais de entrada.</li>
+      </ul>
+      <p>Se uma imagem parece “inteligente”, isso não prova compreensão. Prova que o sistema aprendeu regularidades suficientes para produzir uma saída plausível sob determinadas condições.</p>
+
+      <h2>3. Latent Space — o conceito central</h2>
+      <p>Para entender por que esses modelos funcionam, é preciso abandonar a intuição de que a geração acontece diretamente no espaço de pixels. Gerar pixel por pixel em alta resolução é caro, instável e pouco eficiente. Em vez disso, o sistema opera em um espaço latente: uma representação comprimida da informação visual.</p>
+      <p>Esse espaço latente preserva estrutura relevante da imagem sem carregar toda a redundância do domínio de pixels. Em termos práticos, ele permite que o modelo trabalhe sobre uma forma mais densa e manipulável de informação visual. É nesse espaço que o processo iterativo de denoising se torna viável e eficiente.</p>
+      <p>Pense no latent space não como um “arquivo escondido” da imagem, mas como um domínio de representação no qual formas, texturas, relações espaciais e padrões visuais podem ser reorganizados com muito mais eficiência do que no domínio final de exibição. O sistema não está “vendo pixels” o tempo todo. Ele está navegando em uma estrutura comprimida que codifica possibilidades visuais.</p>
+      <p>Isso explica duas coisas importantes:</p>
+      <ul>
+        <li>por que o modelo consegue transformar ruído em imagem com custo computacional viável;</li>
+        <li>por que pequenas mudanças de parâmetros podem alterar significativamente o resultado final.</li>
+      </ul>
+      <p>Ao final do processo, a representação latente precisa ser decodificada de volta para pixels. Esse momento de conversão também é parte crítica do pipeline, porque a qualidade final não depende apenas do que foi “imaginado” no latente, mas também de como essa representação é traduzida para a imagem visível.</p>
+
+      <h2>4. O papel do modelo</h2>
+      <p>O modelo é a parte que concentra capacidade estatística aprendida. Durante o treinamento, ele internaliza correlações entre padrões visuais, conceitos textuais, estruturas composicionais, estilos, materiais, anatomia, iluminação e muitos outros atributos. Isso não significa que ele armazena imagens prontas; significa que ele ajusta parâmetros capazes de responder a distribuições complexas observadas nos dados.</p>
+      <p>Em termos operacionais, o que o modelo “sabe” é uma gramática estatística do visual. Ele sabe aproximar retratos, objetos, ambientes, enquadramentos, certos estilos e relações recorrentes entre linguagem e imagem. Mas esse conhecimento tem limites estruturais:</p>
+      <ul>
+        <li>ele generaliza melhor do que reproduz com precisão absoluta;</li>
+        <li>ele acerta padrões frequentes com mais facilidade do que casos raros;</li>
+        <li>ele pode parecer robusto em semântica ampla e falhar em detalhes finos;</li>
+        <li>ele herda vieses, lacunas e distorções do conjunto de dados e do treinamento.</li>
+      </ul>
+      <p>Por isso, um modelo pode ser excelente para retratos e fraco para tipografia, bom para composição ampla e inconsistente em mãos, competente para certos materiais e ruim para relações espaciais muito específicas. O modelo define o campo de capacidade. Ele não garante, sozinho, o resultado desejado.</p>
+
+      <h2>5. O papel do pipeline</h2>
+      <p>Esse é um ponto crítico para todo o restante do treinamento: modelo não é igual a resultado final. Entre a capacidade estatística do modelo e a imagem produzida existe um pipeline. E esse pipeline decide como a capacidade será utilizada.</p>
+      <p>Mesmo em um fluxo mínimo, há pelo menos quatro componentes conceituais:</p>
+      <ul>
+        <li><strong>encoding</strong>: transformar texto ou imagem de entrada em representações que o sistema consiga usar;</li>
+        <li><strong>sampling</strong>: executar a trajetória iterativa de geração no espaço latente;</li>
+        <li><strong>decoding</strong>: converter a representação latente final em pixels visíveis;</li>
+        <li><strong>parâmetros</strong>: controlar seed, steps, guidance, resolução, denoise e outras variáveis que afetam o comportamento do sistema.</li>
+      </ul>
+      <p>O mesmo modelo pode produzir resultados radicalmente diferentes dependendo de sampler, número de passos, guidance, resolução, VAE, estrutura de condicionamento e pós-processamento. Isso significa que qualidade não é atributo puro do checkpoint. Qualidade emerge da interação entre modelo, pipeline e operador.</p>
+      <p>A formulação correta é simples e poderosa: o modelo é capacidade; o pipeline é controle. O engenheiro de pipeline não busca apenas um modelo “bom”. Ele desenha um sistema que torna essa capacidade previsível, auditável e reproduzível.</p>
+
+      <h2>6. Diferença entre LLM e Diffusion Models</h2>
+      <p>É comum tratar todos os sistemas atuais como se fossem versões da mesma IA. Isso gera confusão técnica. LLMs e diffusion models pertencem a paradigmas diferentes, embora ambos sejam modelos generativos.</p>
+
+      <div class="wiki-compare">
+        <div class="wiki-compare-card">
+          <h3>LLM</h3>
+          <ul>
+            <li>entrada e saída primárias em tokens de texto;</li>
+            <li>processamento centrado em sequência e previsão do próximo token;</li>
+            <li>representação interna organizada para linguagem e dependências contextuais;</li>
+            <li>gera continuidade simbólica e discursiva.</li>
+          </ul>
+        </div>
+        <div class="wiki-compare-card">
+          <h3>Diffusion Model</h3>
+          <ul>
+            <li>entrada multimodal possível, mas saída principal é estrutura visual;</li>
+            <li>processamento centrado em transformação iterativa de ruído em representação visual;</li>
+            <li>representação interna voltada para padrões espaciais, texturais e composicionais;</li>
+            <li>gera amostras visuais plausíveis, não sequência textual.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>Em um LLM, o núcleo da geração é prever a continuação mais provável de uma cadeia simbólica. Em um modelo de difusão, o núcleo da geração é iterativamente refinar um estado ruidoso até que ele se torne uma amostra visual coerente. Ambos são generativos, mas o tipo de representação, o processo interno e a natureza do output são diferentes.</p>
+      <p>Também é importante evitar a ideia de que um diffusion model seja apenas “um LLM para imagem”. Essa analogia simplifica demais e oculta diferenças fundamentais de arquitetura, objetivo de treinamento, espaço de representação e dinâmica de inferência.</p>
+
+      <h2>7. O que é condicionamento</h2>
+      <p>Condicionamento é o mecanismo pelo qual sinais externos influenciam a trajetória da geração. Texto é um exemplo clássico, mas não o único. Imagens de referência, mapas de profundidade, pose, máscara, edge maps e outras estruturas também podem funcionar como condicionadores em pipelines mais avançados.</p>
+      <p>No caso do texto, o prompt é convertido em embeddings por encoders apropriados. Esses embeddings não são “ordens compreendidas” como comandos literais. Eles são representações vetoriais que modulam o processo de amostragem. Em outras palavras: o modelo não obedece ao prompt como um sistema determinístico de instruções. Ele desloca a distribuição de geração em direção a regiões mais compatíveis com aquele condicionamento.</p>
+      <p>Guidance entra exatamente nesse ponto. Ele ajusta o quanto o processo deve aderir ao condicionamento em vez de seguir apenas a dinâmica mais livre da distribuição visual aprendida. Guidance baixo tende a gerar saídas mais soltas ou naturais; guidance alto tende a aumentar aderência, mas também pode introduzir rigidez, artefatos e colapso visual.</p>
+      <p>Essa distinção é decisiva: prompt não é comando direto. Prompt é um dos instrumentos de controle de distribuição. Quem trata prompt como se fosse linguagem imperativa acaba esperando causalidade linear em um sistema que opera por influência probabilística.</p>
+
+      <h2>8. Determinismo, aleatoriedade e seed</h2>
+      <p>Geração de imagem é probabilística. Isso significa que o sistema não caminha para um único resultado inevitável, mesmo quando o prompt parece idêntico. A trajetória depende de estados iniciais e escolhas do pipeline. A seed é justamente uma forma de controlar parte dessa aleatoriedade ao fixar o estado inicial do processo pseudoaleatório.</p>
+      <p>Quando seed e demais parâmetros são mantidos constantes, o sistema tende a reproduzir o mesmo resultado, desde que o ambiente de inferência e os componentes relevantes permaneçam equivalentes. Isso torna a seed um mecanismo essencial de reprodutibilidade. Ela não elimina a natureza probabilística do sistema; ela a ancora em uma trajetória reproduzível.</p>
+      <p>Para operação profissional, isso muda tudo. Sem seed salva, sem parâmetros registrados e sem versionamento do workflow, não existe governança real. Existe apenas tentativa e erro com memória curta. Por outro lado, quando seed e variáveis são controladas, a aleatoriedade deixa de ser um problema e passa a ser um recurso de exploração com variação controlada.</p>
+
+      <h2>9. O erro fundamental dos iniciantes</h2>
+      <p>O erro estrutural mais comum entre iniciantes é imaginar que prompt é a variável principal e que o restante do sistema é detalhe. Essa visão produz frustração, inconsistência e aprendizado superficial. Os sintomas aparecem rápido:</p>
+      <ul>
+        <li>achar que um prompt mais “criativo” sempre corrige o problema;</li>
+        <li>ignorar sampler, steps, guidance, denoise, resolução e estrutura do fluxo;</li>
+        <li>alterar múltiplas variáveis ao mesmo tempo e perder capacidade de diagnóstico;</li>
+        <li>não salvar seed, modelo, parâmetros e workflow usado;</li>
+        <li>atribuir todo fracasso ao modelo sem separar falha de modelo, falha de condicionamento e falha de pipeline.</li>
+      </ul>
+      <p>Esse comportamento impede entendimento real porque troca engenharia por superstição operacional. Em vez de observar causalidade técnica, o operador passa a acumular tentativas desconectadas. O resultado pode até ocasionalmente funcionar, mas não se torna sistema.</p>
+
+      <h2>10. Modelo mental correto</h2>
+      <p>A síntese correta deste módulo é direta: geração de imagem com IA é engenharia de probabilidade guiada. O modelo oferece capacidade estatística aprendida. O pipeline transforma essa capacidade em processo controlável. O operador decide como condicionar, como amostrar, como registrar, como comparar e como reproduzir.</p>
+      <p>Qualidade não vem de sorte. Qualidade vem de sistema. Controle não vem de inspiração textual. Controle vem de pipeline. E maturidade técnica começa no momento em que você deixa de perguntar “qual prompt gera isso?” e passa a perguntar “qual arranjo de modelo, condicionamento e parâmetros torna esse resultado reproduzível?”.</p>
+
+      <div class="wiki-panel">
+        <h3>Milestone do módulo</h3>
+        <p>Ao concluir esta página, você deve conseguir explicar com clareza:</p>
+        <ul>
+          <li>o que o modelo faz;</li>
+          <li>o que o pipeline faz;</li>
+          <li>o que o operador controla.</li>
+        </ul>
+      </div>
+
+      <hr class="wiki-sep" aria-hidden="true">
+    </article>
+    <nav class="wiki-footer-nav" aria-label="Navegação entre páginas">
+      <a class="fn-prev" href="01-inicio.html">← Anterior</a>
+      <a class="fn-mid" href="../index.html">Sumário</a>
+      <a class="fn-next" href="03-modulo-0-2.html">Próxima →</a>
+    </nav>
+  </main>
+</body>
+</html>
