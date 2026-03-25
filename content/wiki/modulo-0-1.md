@@ -47,14 +47,15 @@ Para entender por que esses modelos funcionam, é preciso abandonar a intuição
 
 Esse espaço latente preserva estrutura relevante da imagem sem carregar toda a redundância do domínio de pixels. Em termos práticos, ele permite que o modelo trabalhe sobre uma forma mais densa e manipulável de informação visual. É nesse espaço que o processo iterativo de denoising se torna viável e eficiente.
 
-Pense no latent space não como um “arquivo escondido” da imagem, mas como um domínio de representação no qual formas, texturas, relações espaciais e padrões visuais podem ser reorganizados com muito mais eficiência do que no domínio final de exibição. O sistema não está “vendo pixels” o tempo todo. Ele está navegando em uma estrutura comprimida que codifica possibilidades visuais.
+<mark>
+Pense no latent space não como um “arquivo escondido” da imagem, mas como um domínio de representação no qual formas, texturas, relações espaciais e padrões visuais podem ser reorganizados com muito mais eficiência do que no domínio final de exibição. O sistema não está “vendo pixels” o tempo todo. Ele está navegando em uma estrutura comprimida que codifica possibilidades visuais.</mark>
 
-Isso explica duas coisas importantes:
+<mark>Isso explica duas coisas importantes:</mark>
 
-- por que o modelo consegue transformar ruído em imagem com custo computacional viável;
-- por que pequenas mudanças de parâmetros podem alterar significativamente o resultado final.
+<mark>- por que o modelo consegue transformar ruído em imagem com custo computacional viável;</mark><br>
+<mark>- por que pequenas mudanças de parâmetros podem alterar significativamente o resultado final.</mark>
 
-Ao final do processo, a representação latente precisa ser decodificada de volta para pixels. Esse momento de conversão também é parte crítica do pipeline, porque a qualidade final não depende apenas do que foi “imaginado” no latente, mas também de como essa representação é traduzida para a imagem visível.
+<mark>Ao final do processo, a representação latente precisa ser decodificada de volta para pixels. Esse momento de conversão também é parte crítica do pipeline, porque a qualidade final não depende apenas do que foi “imaginado” no latente, mas também de como essa representação é traduzida para a imagem visível.</mark>
 
 ## 4. O papel do modelo
 

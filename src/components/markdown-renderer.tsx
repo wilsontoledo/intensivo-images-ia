@@ -1,5 +1,6 @@
 import { isValidElement, type ReactNode } from "react";
 import ReactMarkdown, { type Components } from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 
 import { slugify } from "@/lib/utils";
@@ -95,8 +96,20 @@ const components: Components = {
       {children}
     </blockquote>
   ),
+  mark: ({ children, ...props }) => (
+    <mark
+      className="rounded bg-yellow-300/85 px-1 py-0.5 font-medium text-slate-950 shadow-[0_0_0_2px_rgba(253,224,71,0.2)]"
+      {...props}
+    >
+      {children}
+    </mark>
+  ),
 };
 
 export function MarkdownRenderer({ content }: MarkdownRendererProps) {
-  return <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>{content}</ReactMarkdown>;
+  return (
+    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={components}>
+      {content}
+    </ReactMarkdown>
+  );
 }
